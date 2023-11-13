@@ -1,0 +1,1 @@
+An app that allows users to view and search through the various desserts that exist on TheMealDB. Users can see written instructions and ingredients for each meal as well as any video instructions that are available on YouTube.
