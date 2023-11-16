@@ -8,6 +8,7 @@
 import Foundation
 
 class MealDetailsViewModel: ObservableObject {
+    let networkManager = NetworkingManager()
     @Published var mealDetails: [MealDetails] = []
     
     
@@ -16,7 +17,7 @@ class MealDetailsViewModel: ObservableObject {
         guard let url = URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(mealId)") else { return }
         Task { @MainActor in
             do {
-                let data = try await NetworkingManager.download(url: url)
+                let data = try await networkManager.download(url: url)
                 let mealDetailsResponse = try JSONDecoder().decode(MealDetailsResponse.self, from: data)
                 mealDetails = mealDetailsResponse.meals
             } catch {

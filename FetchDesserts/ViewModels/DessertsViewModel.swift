@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 class DessertsViewModel: ObservableObject {
+    let networkManager = NetworkingManager()
     @Published var meals: [Meal] = []
     @Published var filteredMeals: [Meal] = []
     @Published var searchText = ""
@@ -38,7 +39,7 @@ class DessertsViewModel: ObservableObject {
         guard let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert") else { return }
         Task { @MainActor in
             do {
-                let data = try await NetworkingManager.download(url: url)
+                let data = try await networkManager.download(url: url)
                 let mealsDict = try JSONDecoder().decode(Meals.self, from: data)
                 meals = mealsDict.meals
             } catch {

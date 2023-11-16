@@ -23,7 +23,7 @@ class NetworkingManager {
     }
     
     // Return data from url and handle the responsee
-    static func download(url: URL) async throws -> Data {
+     func download(url: URL) async throws -> Data {
         let (data, response) = try await URLSession.shared.data(from: url)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
