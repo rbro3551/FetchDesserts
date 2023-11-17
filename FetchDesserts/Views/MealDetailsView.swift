@@ -44,8 +44,8 @@ struct MealDetailsView: View {
                             }
                             
                             
-                            if let url = vm.mealDetails[0].strYoutube {
-                                Link(destination: URL(string: url) ?? URL(fileURLWithPath: "")) {
+                            if let url = vm.mealDetails[0].strYoutube, let destination = URL(string: url) {
+                                Link(destination: destination) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .frame(width: 200, height: 50)
