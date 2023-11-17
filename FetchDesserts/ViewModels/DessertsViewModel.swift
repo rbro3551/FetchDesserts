@@ -9,11 +9,15 @@ import Foundation
 import Combine
 
 class DessertsViewModel: ObservableObject {
-    let networkManager = NetworkingManager()
+    let networkManager: NetworkingManager
     @Published var meals: [Meal] = []
     @Published var filteredMeals: [Meal] = []
     @Published var searchText = ""
     private var cancellables = Set<AnyCancellable>()
+    
+    init(networkManager: NetworkingManager) {
+        self.networkManager = networkManager
+    }
     
     
     func addSubscribers() {

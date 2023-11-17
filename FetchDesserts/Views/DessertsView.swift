@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DessertsView: View {
-    @StateObject var vm = DessertsViewModel()
+    @StateObject var vm = DessertsViewModel(networkManager: NetworkingManager())
     
     var body: some View {
         /* Using a NavigationView since a NavigationStack causes weird list behavior in that

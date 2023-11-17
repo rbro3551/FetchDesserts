@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MealDetailsView: View {
-    @StateObject var vm = MealDetailsViewModel()
+    @StateObject var vm = MealDetailsViewModel(networkManager: NetworkingManager())
     @State private var isShowingIngredients: Bool = false
     let id: String
     

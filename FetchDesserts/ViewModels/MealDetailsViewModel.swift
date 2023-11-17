@@ -8,8 +8,12 @@
 import Foundation
 
 class MealDetailsViewModel: ObservableObject {
-    let networkManager = NetworkingManager()
+    let networkManager: NetworkingManager
     @Published var mealDetails: [MealDetails] = []
+    
+    init(networkManager: NetworkingManager) {
+        self.networkManager = networkManager
+    }
     
     
     func getMealDetails(mealId: String) async {
